@@ -1,0 +1,143 @@
+\documentclass[aspectratio=169]{beamer}
+% \mode<presentation>
+\setbeamertemplate{navigation symbols}{}
+\let\tempone\itemize
+\let\temptwo\enditemize
+\renewenvironment{itemize}{\tempone\addtolength{\itemsep}{0.5\baselineskip}}{\temptwo}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{beamerthemeshadow}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{pgffor}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{tabularx}
+\usepackage{tikz,etoolbox}
+\usepackage{tikz,amsmath,siunitx}
+\usetikzlibrary{arrows,snakes,backgrounds,patterns,matrix,shapes,fit,calc,shadows,plotmarks}
+\usepackage{subcaption}
+\usepackage{pgf}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage[absolute,overlay]{textpos}
+\usetikzlibrary{shapes,arrows,positioning,automata,positioning,spy,matrix,scopes,chains}
+\newcommand{\digs}[2]{\hphantom{999}\llap{#1}\,+\,\hphantom{999}\llap{#2}}
+\setbeamersize{text margin left=6mm}
+\setbeamersize{text margin right=6mm}
+\renewcommand{\insertnavigation}[1]{}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{}
+\usefonttheme{professionalfonts}
+\setbeamercovered{transparent}
+\mode<presentation>
+\linespread{1.25}
+\newcommand{\thetitle}[1]{{\begin{center}\structure{{#1}}\end{center}}}
+\input{math.tex}
+\usepackage{color}
+\usepackage{blindtext}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage[all,dvips]{xy}
+\usepackage{colortbl}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{framed}
+\usepackage{natbib}
+\usepackage[labelformat=empty]{caption}
+\newcommand{\air}{\vspace{0.25cm}}
+\newcommand{\mair}{\vspace{-0.25cm}}
+
+\setbeamertemplate{navigation symbols}{
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+%remove navigation symbols
+\renewcommand{\rmdefault}{crm}
+\definecolor{vermillion}{RGB}{213,94,0}
+\definecolor{orange}{RGB}{230,159,0}
+\definecolor{skyblue}{RGB}{86,180,233}
+\definecolor{bluegreen}{RGB}{90,143,41}
+% \definecolor{bluegreen}{RGB}{0,158,115}
+\definecolor{myyellow}{RGB}{240,228,66} % i dunno if this is the same as standard yellow
+\definecolor{myblue}{RGB}{0,114,178}
+\definecolor{vermillion}{RGB}{213,94,0}
+\definecolor{redpurple}{RGB}{204,121,167}
+\definecolor{lightgrey}{RGB}{234,234,234}
+\usepackage{tikz}
+\usetikzlibrary{fit,positioning}
+\usetikzlibrary{bayesnet}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.pathreplacing}
+% \setbeamerfont{alerted text}{series=\bfseries}
+% \setbeamerfont{structure}{series=\bfseries}
+% Needed for diakgrams.
+\def\im#1#2{
+  \node(#1) [scale=#2]{\pgfbox[center,top]{\pgfuseimage{#1}}
+};}
+% \input{pictures_header}
+% make smaller citations
+\let\realcitep\citep
+\renewcommand*{\citep}[1]{{\scriptsize \realcitep{#1}}}
+\let\realcitet\citet
+\renewcommand*{\citet}[1]{{\scriptsize \realcitet{#1}}}
+\setcitestyle{square,semicolon,aysep={}} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[Controlling Text Generation]{Controlling Text Generation}
+\author[]{Alexander Rush \\(with Yoon Kim, Sam Wiseman, Sebastian Gehrmann,\\ Yuntian Deng, Justin Chiu, and Demi Guo)}
+\institute[Harvard SEAS]{ 
+  \begin{center}
+    \includegraphics[width=5cm]{harvardnlp}
+  \end{center}
+  \vspace{0.5cm}
+  {\Large New York 2018}\\
+  
+  { \url{nlp.seas.harvard.edu}}
+}
+\date{}
+%\usetheme{Madrid}
+\usetheme[hideothersubsections]{Hannover}
+\definecolor{darkgreen}{rgb}{0.13, 0.55, 0.13}
+\definecolor{darkpurple}{rgb}{0.55, 0.0, 0.55}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+  \tableofcontents[currentsection,hideothersubsections]
+  \end{frame}
+}
+
+\AtBeginSubsection[]
+{
+  \begin{frame}
+  \tableofcontents[currentsection,
+        currentsubsection,
+        subsectionstyle=show/shaded/hide]
+  \end{frame}
+}
+
+
+\def\argmax{\operatornamewithlimits{arg\,max}}
+\def\kargmax{\operatornamewithlimits{K-arg\,max}}
+\setbeamercovered{transparent}
+
+
+\begin{document}
+
+\maketitle
+
+\end{document}
