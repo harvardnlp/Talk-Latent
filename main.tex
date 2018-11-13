@@ -94,19 +94,19 @@
 \renewcommand*{\citep}[1]{{\scriptsize \realcitep{#1}}}
 \let\realcitet\citet
 \renewcommand*{\citet}[1]{{\scriptsize \realcitet{#1}}}
-\setcitestyle{square,semicolon,aysep={}} 
+\setcitestyle{square,semicolon,aysep={}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title[Controlling Text Generation]{Controlling Text Generation}
 \author[]{Alexander Rush \\(with Yoon Kim, Sam Wiseman, Sebastian Gehrmann,\\ Yuntian Deng, Justin Chiu, and Demi Guo)}
-\institute[Harvard SEAS]{ 
+\institute[Harvard SEAS]{
   \begin{center}
     \includegraphics[width=5cm]{harvardnlp}
   \end{center}
   \vspace{0.5cm}
-  {\Large New York 2018}\\
-  
+  {\Large Harvard  2018}\\
+
   { \url{nlp.seas.harvard.edu}}
 }
 \date{}
@@ -141,11 +141,11 @@
 
 \maketitle
 
-\section{Introduction}
+\section{Introduction: Data-Driven Text Generation}
 
 \begin{frame}
   \begin{center}
-    \textbf{The Modern Text Generation Challenge} 
+    \textbf{The Modern Text Generation Challenge}
   \end{center}
   \begin{center}
 \begin{tikzpicture}
@@ -156,7 +156,7 @@
 
 % \begin{frame}
 %   \begin{center}
-%     \structure{The Modern Text Generation Challenge: \\ Make Some Conversation (Chatbots)} 
+%     \structure{The Modern Text Generation Challenge: \\ Make Some Conversation (Chatbots)}
 %   \end{center}
 %   \begin{center}
 % \begin{tikzpicture}
@@ -170,7 +170,7 @@
 
 \begin{frame}
   \begin{center}
-    \textbf{Text Generation: \\ Talk about Text (Translation / Summarization) } 
+    \textbf{Text Generation: \\ Talk about Text (Translation / Summarization) }
   \end{center}
   \begin{center}
 \begin{tikzpicture}
@@ -193,7 +193,7 @@ mexico city , mexico -lrb- cnn -rrb- -- heavy rains and flooding have forced hun
 
 \begin{frame}
   \begin{center}
-    \textbf{Text Generation: \\ Talk about Structured Data (Generation) } 
+    \textbf{Text Generation: \\ Talk about Structured Data (Generation) }
   \end{center}
   \begin{center}
 \begin{tikzpicture}
@@ -246,7 +246,7 @@ Hawks  &         7 &          15 &       95 &     \ldots      \\
 
 \begin{frame}
   \begin{center}
-    \textbf{ Text Generation: \\ Talk about the Environment (Multimodal) } 
+    \textbf{ Text Generation: \\ Talk about the Environment (Multimodal) }
   \end{center}
   \begin{center}
 \begin{tikzpicture}
@@ -460,7 +460,7 @@ Rodney McGruder  &    5 &    5 &  11 &    3 &    8 &     Miami \\
   \end{center}
 
     \textit{Building Natural Language Generation Systems} (1999)
-  
+
 \vspace*{-1cm}
  \begin{center}
     \includegraphics[width =12cm]{datadoc}
@@ -472,15 +472,15 @@ Rodney McGruder  &    5 &    5 &  11 &    3 &    8 &     Miami \\
 \begin{center}
     \textbf{Research Direction: Deep Latent-Variable Models for NLP }
   \end{center}
-  Goal: Expose specific choices as explicit latent variables.   
-  
+  Goal: Expose specific choices as explicit latent variables.
+
 \end{frame}
 
 \begin{frame}
 \begin{center}
     \textbf{ Latent-Variable Model Basics }
   \end{center}
-  
+
 Latent variable models give us a joint distribution
 \begin{align*}
 p(x, z \param \theta).
@@ -505,25 +505,25 @@ p(x, z \param \theta).
 
 \begin{frame}\thetitle{Posterior Inference}
     For models $p(x, z \param \theta)$, we'll be interested in the \textit{posterior} over latent variables $z$:
-    
+
     \begin{align*}
         p(z \given x \param \theta) = \frac{\displaystyle p(x, z \param \theta)}{\displaystyle p(x \param \theta)}.
     \end{align*}
-    
+
     \air
-    
+
     \air
     \pause
     Why?
     \begin{itemize}
-        \item $z$ will often represent interesting information about our data (e.g., the cluster $x^{(n)}$ lives in, how similar $x^{(n)}$ and $x^{(n+1)}$ are).
-        
-        \item Learning the parameters $\theta$ of the model often requires calculating posteriors as a subroutine. \item Intuition: if I know likely $z^{(n)}$ for $x^{(n)}$, I can learn by maximizing $p(x^{(n)} \given z^{(n)} \param \theta)$.
+        \item $z$ will often represent interesting information about our data.
+
+\item Intuition: if I know likely $z^{(n)}$ for $x^{(n)}$, I can learn by maximizing $p(x^{(n)} \given z^{(n)} \param \theta)$.
         % \begin{itemize}
         %     \item Intuition: if I know likely $z^{(n)}$ for $x^{(n)}$, I can learn by maximizing $p(x^{(n)} \given z^{(n)} \param \theta)$.
         % \end{itemize}
     \end{itemize}
-    
+
 \end{frame}
 
 \begin{frame}
@@ -532,17 +532,17 @@ p(x, z \param \theta).
       \small{(Gu et al, 2016) (Gulcehre et al, 2016)}}
   \end{center}
 
-Let $z$ be a binary latent variable. 
+Let $z$ be a binary latent variable.
 \air
 \begin{itemize}
-\item If $z = 0$, let the model generate a new word. 
-\item If $z = 1$, let the model copy a word from the source.   
+\item If $z = 0$, let the model generate a new word.
+\item If $z = 1$, let the model copy a word from the source.
 \end{itemize}
 
 Inference:
 
 \begin{center}
-  
+
 
 \includegraphics[width=15cm]{seeblog}
 
@@ -555,7 +555,7 @@ Inference:
   \begin{center}
     \textbf{ Latent Variable Models for Generation}
   \end{center}
-  
+
   \begin{itemize}
   \item Can we develop other discrete latent-variable models for generation?
     \air
@@ -563,7 +563,7 @@ Inference:
     \air
   \item Goals:
     \begin{itemize}
-    \item Model Control 
+    \item Model Control
     \item Model Debugging
     \item Model Uncertainty
     \end{itemize}
@@ -576,7 +576,7 @@ Inference:
   \begin{center}
     \textbf{Approach 1: Latent Alignment and Variational Attention}
   \end{center}
-  
+
   \begin{center}
     \includegraphics[width=0.7\textwidth]{AttentionVIS}
   \end{center}
@@ -592,14 +592,587 @@ Inference:
     \includegraphics[width=0.7\textwidth]{DecoderVis}
   \end{center}
 \end{frame}
-\section{Work 1: Latent Alignment and Variational Attention}
 
-\section{Work 2: Learning Neural Templates}
+\section{Work 1: Learning Neural Templates}
+
+
+\begin{frame}
+  \begin{center}
+    \textbf{Text Generation: \\ Talk about Structured Data (Generation) }
+  \end{center}
+  \begin{center}
+\begin{tikzpicture}
+\node{\includegraphics[width=5cm]{galaxy}};
+\path<2>[draw] (0, 0) --  (2,0) ;
+\node[inner sep=1pt, rounded corners, text width=15em, xshift=-4cm,]{\small
+  \begin{center}
+\vspace{0.5cm}
+\footnotesize
+\begin{tabular}{lcccccc}
+\toprule
+{} & W & L & PTS &  \ldots \\
+TEAM &           &             &          &                      \\
+\midrule
+Heat   &        11 &          12 &      103 &     \ldots      \\
+Hawks  &         7 &          15 &       95 &     \ldots      \\
+\bottomrule
+
+\vspace*{0.3cm}
+\end{tabular}
+
+% \begin{tabular}{lccccccccc}
+% \toprule
+% {} &  AS &    RB &   PT &  FG &  FGA & CITY  $\ldots$ \\
+% PLAYER      &      &      &      &       &      &      &           \\
+% \midrule
+% Tyler Johnson    &    5 &    2 &  27 &    8 &   16 &     Miami \\
+% Dwight Howard    &    11 &    17 &  23 &    9 &   11 &   Atlanta \\
+% Paul Millsap     &    2 &    9 &  21 &    8 &   12 &   Atlanta \\
+% Goran Dragic     &    4 &    2 &  21 &    8 &   17 &     Miami \\
+% Wayne Ellington  &    2 &    3 &  19 &    7 &   15 &     Miami \\
+% Dennis Schroder  &    7 &    4 &  17 &    8 &   15 &   Atlanta \\
+% Rodney McGruder  &    5 &    5 &  11 &    3 &    8 &     Miami \\
+% \ldots \\
+% \bottomrule
+% \end{tabular}
+
+  \end{center}
+
+
+
+
+};
+ % \node [xshift=-3.5cm, rectangle, draw,thick,fill=blue!0,text width=8em, rounded corners, inner sep =5pt, minimum height=1em]{\baselineskip=50pt \footnotesize The Atlanta Hawks defeated the Miami Heat, 103 - 95, at Philips Arena on Wednesday. Atlanta  ... \par};
+\visible<2>{\node[xshift=3.5cm, rectangle, draw,thick,fill=blue!0,text width=8em, rounded corners, inner sep =5pt, minimum height=1em]{\baselineskip=50pt \footnotesize The Atlanta Hawks defeated the Miami Heat, 103 - 95, at Philips Arena on Wednesday. Atlanta  ... \par};}
+\end{tikzpicture}
+  \end{center}
+\end{frame}
+
+
 {
 \setbeamercolor{background canvas}{bg=}
 \includepdf[pages=2-35]{template}
 }
 
+\section{Work 2: Learning Alignments}
 
+
+\begin{frame}
+  \begin{center}
+    \textbf{Text Generation: \\ Talk about Text (Translation / Summarization) }
+  \end{center}
+  \begin{center}
+\begin{tikzpicture}
+\node{\includegraphics[width=5cm]{galaxy}};
+\path<2>[draw] (0, 0) --  (2,0) ;
+
+\node[inner sep=1pt, rounded corners, text width=15em, xshift=-4cm,]{\small
+
+\vspace{0.5cm}
+\tiny
+mexico city , mexico -lrb- cnn -rrb- -- heavy rains and flooding have forced hundreds of thousands of people from homes in southern mexico 's state of tabasco over the past four days , with nearly as many trapped by the rising waters , state officials said thursday . officials say about 300,000 people are still trapped by the worst flooding in the region for 50 years . the grijalva river pushed over its banks through the state capital of villahermosa on thursday , forcing government workers to evacuate and leaving up to 80 percent of the city flooded , gov. andres granier 's office told cnn . about 700,000 people have seen their homes flooded , with about 300,000 of those still trapped there , granier 's office reported . one death had been blamed on the floods , which followed weeks of heavy rain in the largely swampy state . tabasco borders guatemala to the south and the gulf of mexico to the north . \ldots
+
+};
+\visible<2>{
+\node [xshift=3.5cm, rectangle, draw,thick,fill=blue!0,text width=8em, rounded corners, inner sep =5pt, minimum height=1em]{\baselineskip=50pt \footnotesize tabasco and chiapas states hardest hit. authorities say 700,000 affected \ldots   \par};}
+\end{tikzpicture}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}
+\thetitle{Six Challenges for NMT (Koehn and Knowles 2017)}
+\begin{enumerate}
+    \item Out of domain generalization
+    \air
+    \item \textbf{Sample complexity}
+    \air
+    \item Rare words
+    \air
+    \item Long sentences
+    \air
+    \item \textbf{The alignments learned by soft attention may not
+        be interpreted as word alignments}
+    \air
+    \item Beam search degradation for large beams
+\end{enumerate}
+\end{frame}
+
+
+\section{Intro}
+
+
+% \begin{frame}
+% \thetitle{This Work: A Study of Attention Models}
+%      General method with many applications in,
+%     \begin{enumerate}
+%         \item \textbf{Translation}
+%         \item Speech Recognition
+%         \item Summarization
+%         \item Image Generation
+%     \end{enumerate}
+%     \air
+
+% \begin{itemize}
+%     \item Can they be improved?
+%     \item Can we incorporate external information?
+%     \item Can we build in inductive bias?
+% \end{itemize}
+% \end{frame}
+
+% \section{Formal Description}
+
+\begin{frame}\thetitle{Attention versus Alignment}
+\begin{itemize}
+     \item Attention is motivated as an ``alignment'' module:
+        \begin{itemize}
+            \item makes the model's behavior interpretable
+            \item can be used for other prediction tasks
+        \end{itemize}
+    \air
+    \item Soft Attention is a \textit{deterministic}  from a neural network,
+    \air
+
+    \item We contrast this with alignment which acts as a random variable.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\thetitle{Latent Alignment: Motivation}
+
+If attention works so well, why study alignment?
+
+\begin{itemize}
+    \item A latent variable approach  facilitates \structure{composibility}  in a principled probabilistic manner. (Cohn et al, 2016)
+    \air
+    \item \structure{Posterior inference} provides better post-hoc interpretability and analysis
+    \air
+    \item Modeling \structure{uncertainties} might lead to better performance
+\end{itemize}
+\end{frame}
+
+\begin{frame}\thetitle{Notation: Alignment Model}
+\begin{itemize}
+    \item $x$ = $x_1,\cdots, x_T$: the observed set (the encoded source words
+        and previous target words)
+    \item $\tilde{x}$: the query (the decoder hidden state at a single timestep)
+    \item $y$: the output (the current target word)
+    \item $z$: the latent alignment, random variable indicating which member of $x$ generates $y$
+\air
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\node(z)[latent]{$z$};
+\node(y)[right =of z, latent]{$y$};
+\node(x)[obs, above = of y]{$x_i$};
+\node(xp)[above= of z, obs]{$\tilde{x}$};
+\plate {} {(x)} {};
+\edge {x} {y};
+\edge {xp} {z};
+\edge {x} {z};
+\edge {x} {y};
+\edge {z} {y};
+\end{tikzpicture}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+\begin{frame}\thetitle{Problem Setup}
+\begin{itemize}
+\item Let $\mcD$ be the prior distribution of $z$ and $f(x,z;\theta)$ the
+likelihood of $x$ given $z$
+\item Generative Process
+    \begin{eqnarray*}
+        z \sim {\mcD}(a(x, \tilde{x};\theta )) \ \ \ \  y \sim f(x, z; \theta)
+    \end{eqnarray*}
+\item Training Objective (maximizing marginal log-likelihood)
+    \begin{eqnarray*}
+        \max_{\theta}\ \log p(y = \hat{y} \given  x, \ \tilde{x}) &=& \max_{\theta} \ \log \E_z [f(x, z;\theta)_{\hat{y}}]
+    \end{eqnarray*}
+\item Direct optimization is computationally expensive
+    \begin{itemize}
+        \item Discrete $z\sim{\mcD}$: $O(T)$ additional runtime
+        \item Continuous ${z\sim\mcD}$: intractable
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\thetitle{Workaround 1: Soft Attention}
+\begin{itemize}
+\item Replace the joint distribution with a nested expectation
+{\small[Bahdanau et al 2014]}
+    \begin{eqnarray*}
+        \log \E_z [f(x, z;\theta)_{\hat{y}}] \approx \log f(x,\E_z[z];\theta)
+    \end{eqnarray*}
+\item The corresponding graphical model is
+\air
+\begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \node(y)[latent]{$y$};
+            \node(x)[obs, above = of y]{$x_i$};
+            \node(xp)[left= of x, obs]{$\tilde{x}$};
+            \plate {} {(x)} {};
+            \edge {xp} {y};
+            \edge {x} {y};
+        \end{tikzpicture}
+    \end{figure}
+\end{itemize}
+\end{frame}
+
+\begin{frame}\thetitle{Workaround 2: Hard Attention}
+\begin{itemize}
+\item Keep the latent variable model formulation and maximize a lower bound
+on the marginal likelihood
+\air
+\item {\small[Xu et al 2015]}: Directly apply Jensen's inequality and optimize
+    with REINFORCE by sampling from the prior
+    \begin{eqnarray*}
+        \log \E_z [f(x, z;\theta)_{\hat{y}}] \ge \E_z \log [f(x, z;\theta)_{\hat{y}}]
+    \end{eqnarray*}
+\item The use of the prior in the expectation may result in a poor bound
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\thetitle{Marginal Likelihood: Variational Decomposition}
+
+For any\footnote{Technical condition: $\text{supp}(q(z)) \subset \text{supp}(p(z \given x ; \theta))$} distribution $q(z)$ over $z$,
+\begin{align*}
+ L(\theta) &= \textcolor{red}{\E_{q}\Big[\log p(y \given x, z) \Big] - \KL[q(z) \, \Vert \, p(z
+  \given x, \tilde{x})] } \\ &
++ \textcolor{blue}{\KL[q(z )  \, \Vert \, p(z \given y, x, \tilde{x} )]}
+\end{align*}
+
+\begin{center}
+\begin{tikzpicture}
+    \draw[decorate,decoration={brace,amplitude=10pt}] (-0.3, 0) -- node[xshift=-0.75cm]{} (-0.3, 3);
+
+    \draw[red] (0, 0) rectangle (1, 2);
+    \draw[blue] (0, 2) rectangle (1, 3);
+    \draw[decorate,decoration={brace,amplitude=5pt}] (1.3, 2) -- node[xshift=3cm]{$\alert{\text{ELBO  (evidence lower bound) }}$} (1.3, 0);
+    \draw[decorate,decoration={brace,amplitude=5pt}] (1.3, 3) -- node[xshift=1.5cm]{$\structure{\text{posterior gap}}$} (1.3, 2);
+\end{tikzpicture}
+\end{center}
+
+%\begin{itemize}
+%    \item The \alert{evidence lower bound} (ELBO)
+%    \item The \structure{posterior gap}
+%\end{itemize}
+
+Since KL is always non-negative, $L(\theta) \geq \text{ELBO}(\theta, \lambda)$.
+\end{frame}
+
+
+\begin{frame}\thetitle{Proposal: Variational Attention}
+\begin{itemize}
+    % \item Note that we must have $\textrm{supp } q(z) \subseteq \textrm{supp } p(z \given x, \tilde{x}, y)$
+    \item Learn model and $q$ to maximize the following lower bound
+        \begin{align*}
+        \log &\E_{z \sim p(z \given x, \tilde{x})}[p(y \given x, z)]\\
+        &\ge\E_{z \sim q(z)}[\log p(y \given x, z)] - \KL[q(z) \, \Vert \, p(z
+  \given x, \tilde{x})]
+        \end{align*}
+    \item We choose a pair $\mcD$ and $q(z)$ that affords analytic KL
+    \item At test time, marginalize over $z$ during decoding
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\thetitle{Example Form of $q$: Amortized Parameterization}
+\begin{center}
+    \begin{tikzpicture}
+% nodes
+ \node[latent] (zl) {$z$};%
+ \node[obs, below=of zl] (xl) {$\tilde{x}$};%
+ \node[obs, right=of xl] (xtilde) {$x_i$};%
+ \node[obs, left=of xl] (yl) {$y$};%
+ %\node[obs, right=1cm of dots] (xT) {$x_T^{(n)}$};%
+ \node[const, above=of zl] (lambda) {$\lambda$};
+% plate
+ \edge{lambda}{zl};
+ \edge{yl}{zl};
+ \edge{xl}{zl};
+\edge {xtilde} {z};
+\plate {} {(xtilde)} {};
+
+ \begin{scope}[xshift=5cm]
+\node(z)[latent]{$z$};
+\node(y)[right =of z, latent]{$y$};
+\node(x)[obs, above = of y]{$x_i$};
+\node(xp)[above= of z, obs]{$\tilde{x}$};
+\plate {} {(x)} {};
+\edge {x} {y};
+\edge {xp} {z};
+\edge {x} {z};
+
+\edge {x} {y};
+\edge {z} {y};
+ \end{scope}
+ \draw[dashed] (zl) --node [yshift=0.2cm] {$\KL(q(z) || p(z \given x,  \tilde{x}, y))$} (z);
+\end{tikzpicture}
+\end{center}
+$\lambda$ parameterizes a global network (encoder) that is run over $x, y, \tilde{x}$
+    to produce the local variational distribution, e.g.
+    \[ q(z ; \lambda) = \text{enc}(x, \tilde{x}, y ; \lambda)\]
+\end{frame}
+
+\begin{frame}\thetitle{Method}
+\begin{figure}
+  \centering
+
+  \begin{tikzpicture}[every node/.style={anchor=base,minimum size=8mm}]
+    \matrix  (graph) [matrix of nodes, row sep=0.5em,column sep=-0.3em,
+    minimum width=0.2em, minimum height=0.5em, font=\small,ampersand replacement=\&] {
+      Mary \&
+      did \&
+      not \&
+      slap \&
+      the \&
+      green \&
+      witch \\
+      $z$ \& \& \& \& \& \& $\substack{\textcolor{blue}{p(z| x, \tilde{x})} \\ \textcolor{red}{q(z; x, \tilde{x}, y)} }$ \\
+      Maria \&
+      no \&
+      \textbf{daba} \&
+      una \&
+      bofetada \; a\&
+       la \; bruja \&
+      verda\\
+    };
+
+
+    \begin{scope}[on background layer]
+      \draw[blue!30, line width=0.1mm] (graph-1-1) -- (graph-3-3);
+      \draw[blue!30,line width=0.8mm] (graph-1-2) -- (graph-3-3);
+      \draw[blue!30,line width=0.4mm] (graph-1-3) -- (graph-3-3);
+      \draw[blue!30,line width=0.6mm] (graph-1-4) -- (graph-3-3);
+      \draw[blue!30,line width=0.04mm] (graph-1-5) -- (graph-3-3);
+      \draw[blue!30,line width=0.5mm] (graph-1-6) -- (graph-3-3);
+      \draw[blue!30,line width=0.15mm] (graph-1-7) -- (graph-3-3);
+
+      \draw[draw=red!30, line width=0.2mm] ($(graph-1-1) + (0.1, 0)$) -- ($(graph-3-3) + (0.1, 0)$);
+      \draw[draw=red!30, line width=0.2mm] ($(graph-1-2) + (0.1, 0)$) -- ($(graph-3-3) + (0.1, 0)$);
+      \draw[draw=red!30, line width=0.1mm] ($(graph-1-3) + (0.1, 0)$) -- ($(graph-3-3) + (0.1, 0)$);
+      \draw[draw=red!30, line width=0.9mm] ($(graph-1-4) + (0.1, 0)$) -- ($(graph-3-3) + (0.1, 0)$);
+      \draw[draw=red!30, line width=0.1mm] ($(graph-1-5) + (0.1, 0)$) -- ($(graph-3-3) + (0.1, 0)$);
+      \draw[draw=red!30, line width=0.4mm] ($(graph-1-6) + (0.1, 0)$) -- ($(graph-3-3) + (0.1, 0)$);
+      \draw[draw=red!30, line width=0.1mm] ($(graph-1-7) + (0.1, 0)$) -- ($(graph-3-3) + (0.1, 0)$);
+
+
+      \draw[rounded corners,fill=red!10] ($ (graph-3-1.north west) +(-0.1,0.1)$) rectangle  node[yshift=-0.8cm]{\textcolor{red}{}} ($(graph-3-7.south east) +(0.1,-0.1)$ ) ;
+
+      \draw[rounded corners,fill=red!10] ($ (graph-1-1.north west) +(-0.1,0.1)$) rectangle  node[yshift=0.8cm]{\textcolor{red}{}} ($(graph-1-7.south east) +(0.1,-0.1)$ ) ;
+
+      \draw[rounded corners,fill=green!10] (graph-1-1.north west) rectangle  node[ yshift =0.7cm] {$x_{1:T}$} (graph-1-7.south east);
+
+      \path[] (graph-3-3.north west) rectangle  node[yshift=-0.9cm]{\textbf{$y_3$}} (graph-3-3.south east);
+
+      \draw[rounded corners, fill=blue!10] (graph-3-1.north west) rectangle  node[yshift=-0.9cm]{\textcolor{blue}{$\tilde{x}$}}  ($(graph-3-2.south east) + (-0.1, 0)$);
+
+    \end{scope}
+  \end{tikzpicture}
+
+
+  A sketch of variational attention applied to translation.
+  \begin{itemize}
+  \item  The blue prior $p$ is restricted to past information,
+  \item  The red variational posterior $q$ may take into account future observations.
+  \end{itemize}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}\thetitle{Proposal: Categorical and Relaxed}
+\begin{itemize}
+    \item Categorical (Single Source Alignment Word)
+    \begin{itemize}
+        \item $z\sim\mcD$ and $q(z)$: Categorical
+        \item Estimate gradients with REINFORCE
+        \[ \E_{z \sim q(z)} [\nabla_\theta\log f(x,z) + \log f(x,z)\nabla_\phi \log q(z) ] \]
+    \end{itemize}
+    \pause
+
+    \item Relaxed (Mixture Source Alignment)
+    \begin{itemize}
+        \item $z\sim\mcD$ and $q(z)$: Dirichlet
+        \item Use the reparameterization trick {\small[Kingma et al 2013]}
+            \begin{itemize}
+            \item Sample $u$ from a simple distribution $\mathcal{U}$
+            \item Apply transformation $g_{\phi}(\cdot)$ to obtain $z=g_{\phi}(u)$
+            \end{itemize}
+        \item The gradient estimator takes the form
+            \[ \E_{u \sim \mathcal{U}} \left[\nabla_{\theta,\phi} \log f(x,g_\phi(u))\right ]\]
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\thetitle{Important Extension: Variance Reduction for Categorical}
+\begin{itemize}
+    \item REINFORCE gradient estimator suffers from high variance
+    \air
+    \item Introduce control variate or baseline $B = \log f(x, \E_{z'\sim q(z)}[z'])$ from soft attention
+    \[ \E_{z \sim q(z)} [\nabla_\theta\log f(x,z) + ( \log f(x,z) -
+  B)\nabla_\phi \log q(z) ] \]
+    \item Requires a single additional evaluation of $f(x,\E_{z'\sim q(z)}[z'])$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \thetitle{Experiments}
+
+  \begin{itemize}
+  \item Full experiments on IWSLT and WMT using LSTM based NMT system.
+  \item Model: Two layer attention based LSTM.
+  \item Variational Model: Bidirectional LSTM model.
+  \item Preliminary experiments on low-resource MT setup.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}\thetitle{Results (MT: IWSLT)}
+\begin{table}
+  \centering
+  \begin{tabular}{lllrrrrr}
+    \toprule
+    % %
+    Model & Objective & Exp  & PPL &  BLEU \\
+    \midrule
+  Soft Attn & $\log p(y \given \E[z])$ & Softmax & 7.17 &  32.77 \\
+  Marg. Likelihood & $\log \E[p]$ &  Enum & 6.34  & 33.29\\
+  Hard Attn  & $\E_p[\log p]$ & Enum & 6.77 &  31.40\\
+  Hard Attn  & $\E_p[\log p]$  & Sample &  6.78 &   30.42\\
+  Var Relaxed Attn& $\E_q[\log p] - \KL$ & Sample & 7.58	 & 30.05 \\
+  Var Attn  & $\E_q[\log p] - \KL$ & Enum & 6.08&  \textbf{33.69} \\
+  Var Attn &  $\E_q[\log p] - \KL$ &Sample& 6.17&  \textbf{33.30} \\
+    \bottomrule
+  \end{tabular}
+
+  % \caption{The Exp column indicates
+  % whether the expectation in the objective is calculated via enumeration (Enum) or approximated with a single sample (Sample) during training.
+  % We evaluate on perplexity PPL (lower is better)
+  % and BLEU (higher is better) for IWSLT '14 De-En.}
+\end{table}
+\end{frame}
+\begin{frame}\thetitle{Preliminary Results (Low Data Settings)}
+\begin{table}
+  \centering
+  \begin{tabular}{lllrrrrr}
+    \toprule
+    % %
+    Training Size & 10k  & 25k  & 50k &  Full (160k)\\
+    \midrule
+  Soft Attn           & 12.10 & 22.88 & 26.65 & 32.77 \\
+  Marginal Likelihood & 16.79 & 23.44 & 26.99 & 33.29 \\
+  Var Attn Enum       & 14.90 & 23.50 & 27.26 &  33.69 \\
+  Var Attn Sample     & 12.20 & 23.35 & 27.87 &  33.30 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\end{frame}
+\begin{frame}\thetitle{Results (VQA)}
+\begin{table}
+  \centering
+  \begin{tabular}{lllrrrrr}
+    \toprule
+    % %
+    Model & Objective & Exp  & NLL &  Eval \\
+    \midrule
+  Soft Attn & $\log p(y \given \E[z])$ & Softmax & 1.76 & 58.93 \\
+  Marg. Likelihood & $\log \E[p]$ &  Enum & 1.69  &60.33\\
+  Hard Attn  & $\E_p[\log p]$ & Enum & 1.78 &  57.60\\
+  Hard Attn  & $\E_p[\log p]$  & Sample &  1.82 &   56.30\\
+  Var Attn  & $\E_q[\log p] - \KL$ & Enum & 1.68 &  58.44 \\
+  Var Attn &  $\E_q[\log p] - \KL$ &Sample& 1.74 &  57.52 \\
+    \bottomrule
+  \end{tabular}
+
+  \caption{The Exp column indicates
+  whether enumeration (Enum) or sampling (Sample) was used during training.
+  We evaluate intrinsically on negative log-likelihood NLL (lower is better)
+  and VQA evaluation metric (higher is better).}
+   \label{tab:eval_nmt}
+\end{table}
+\end{frame}
+
+
+\begin{frame}\thetitle{Inference}
+\begin{center}
+\includegraphics[width=10cm]{sample}
+\end{center}
+
+\end{frame}
+
+\begin{frame}\thetitle{Discussion}
+\begin{itemize}
+    \item Soft attention underperforms
+        latent attention
+    \air
+    \item Variational attention achieves
+        similar performance to maximizing the marginal likelihood exactly
+        despite optimizing a lower bound
+    \air
+    \item Proposed soft attention as a computationally cheap baseline for reducing the variance of the
+        REINFORCE gradient estimator
+\end{itemize}
+\end{frame}
+
+\begin{frame}\thetitle{Discussion: Alternative Inference Methods}
+\begin{table}
+\centering
+\begin{tabular}{lccc}
+       \toprule
+    Inference Method & \#Samples & PPL & BLEU \\
+    \midrule
+  REINFORCE & 1 & 6.17 & 33.30 \\
+  RWS & 5 & 6.41 & 32.96 \\
+  Gumbel-Softmax  & 1 & 6.51 & 33.08\\
+    \bottomrule
+   \end{tabular}
+   \end{table}
+\begin{itemize}
+    \item Gumbel-Softmax is a viable alternative
+    \item RWS incurs higher memory cost
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}\thetitle{Example Alignments}
+\begin{figure}[t]
+  \centering
+  \includegraphics[height=7cm]{img/var-attn/2531p-q-attn}
+  \caption{\label{fig:attn} Red: prior; blue: posterior.}
+  \label{fig:pq}
+\end{figure}
+\end{frame}
+\begin{frame}\thetitle{Example Alignments}
+\begin{figure}[t]
+  \centering
+  \includegraphics[height=7cm]{img/var-attn/2509svattn}
+  \label{fig:pq:b}
+  \caption{\label{fig:attn} Red: prior; green: soft attention.}
+  \label{fig:pq}
+\end{figure}
+\end{frame}
+
+% \begin{frame}
+%   \thetitle{Conclusion}
+%   \begin{itemize}
+%   \item Latent alignment methods competitive or better than soft attention.
+%     \item   Code: \url{https://github.com/harvardnlp/var-attn}
+%   \item Future Work
+%     \begin{itemize}
+%     \item Utilize additional knowledge to help alignment.
+%     \item Incorporate model constraints.
+%     \item Variational alignment for other problems.
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
 \end{document}
