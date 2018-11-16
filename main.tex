@@ -43,7 +43,7 @@
 \setbeamercovered{transparent}
 \mode<presentation>
 \linespread{1.25}
-\newcommand{\thetitle}[1]{{\begin{center}\structure{{#1}}\end{center}}}
+\newcommand{\thetitle}[1]{{\begin{center}\textbf{{#1}}\end{center}}}
 \input{math.tex}
 \usepackage{color}
 \usepackage{blindtext}
@@ -105,9 +105,9 @@
     \includegraphics[width=5cm]{harvardnlp}
   \end{center}
   \vspace{0.5cm}
-  {\Large Harvard  2018}\\
+  {\Large New York 2018}\\
 
-  { \url{nlp.seas.harvard.edu}}
+  { \url{nlp.seas.harvard.edu} / @harvardnlp}
 }
 \date{}
 %\usetheme{Madrid}
@@ -140,6 +140,148 @@
 \begin{document}
 
 \maketitle
+
+\section{Preface: Seq2Seq+}
+
+
+\begin{frame}
+  \begin{center}
+    \textbf{Seq2Seq+}  \air
+  \end{center}
+\center
+\vspace{-5mm}
+ \air
+\includegraphics[scale=0.37]{nmt-attn1}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \textbf{Seq2Seq+} \air
+
+  \end{center}
+\center
+\vspace{-5mm}
+ \air
+\includegraphics[scale=0.37]{nmt-attn2}
+\end{frame}
+\begin{frame}
+  \begin{center}
+    \textbf{Seq2Seq+} \air
+
+  \end{center}
+\center
+\vspace{-5mm}
+ \air
+\includegraphics[scale=0.37]{nmt-attn3}
+\end{frame}
+\begin{frame}
+  \begin{center}
+    \textbf{Seq2Seq+} \air
+
+  \end{center}
+\center
+\vspace{-5mm}
+ \air
+\includegraphics[scale=0.37]{nmt-attn4}
+\end{frame}
+\begin{frame}
+  \begin{center}
+    \textbf{Seq2Seq+} \air
+
+  \end{center}
+\center
+\vspace{-5mm}
+ \air
+\includegraphics[scale=0.37]{nmt-attn5}
+\end{frame}
+\begin{frame}
+  \begin{center}
+    \textbf{Seq2Seq+} \air
+
+  \end{center}
+\center
+\vspace{-5mm}
+ \air
+\includegraphics[scale=0.37]{nmt-attn6}
+\end{frame}
+\begin{frame}
+  \begin{center}
+    \textbf{Seq2Seq+} \air
+
+  \end{center}
+\center
+\vspace{-5mm}
+ \air
+\includegraphics[scale=0.37]{nmt-attn7}
+\end{frame}
+\begin{frame}
+  \begin{center}
+    \textbf{Seq2Seq+} \air
+
+  \end{center}
+\center
+\vspace{-5mm}
+ \air
+\includegraphics[scale=0.37]{nmt-attn8}
+\end{frame}
+\begin{frame}
+  \begin{center}
+    \textbf{Seq2Seq+} \air
+
+  \end{center}
+\center
+\vspace{-5mm}
+ \air
+\includegraphics[scale=0.37]{nmt-attn9}
+\end{frame}
+\begin{frame}
+  \begin{center}
+    \textbf{Seq2Seq+} \air
+
+  \end{center}
+\center
+\vspace{-5mm}
+ \air
+\includegraphics[scale=0.37]{nmt-attn10}
+\end{frame}
+
+\begin{frame}
+  \centerline{\textbf{Seq2Seq+}}
+
+  \textcolor{blue}{Encoder} :
+  \[{\mathbf{h}^{x}_m \gets \RNN(\mathbf{h}^{x}_{m-1}, x_m)} \]
+
+
+  \textcolor{orange}{Attention}
+  \[\alpha \gets  \softmax(   [\mathbf{h}^{x}_1 ; \ldots; \mathbf{h}^{x}_M]^\top \mathbf{h}_{n} )\]
+  \[{\mathbf{c}_n} \gets \sum_{m =1}^M \alpha_m \mathbf{h}_m^{x}  \]
+
+  \textcolor{red}{Decoder}:
+  \[{\mathbf{h}_n \gets \RNN(\mathbf{h}_{n-1}, w_n)} \]
+
+  Prediction
+  \[p(w_{n+1} | w_{1:n}, x_{1:M}) = \softmax( \mathbf{W} [\mathbf{h}_n, \mathbf{c}_n]) \]
+
+\end{frame}
+
+
+\begin{frame}
+  \begin{center}
+    \textbf{OpenNMT\\ {\small (Klein et al, 2017)}}
+
+  \includegraphics[width=10cm]{opennmt}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \textbf{Seq2Seq-Vis \\ {\small (Strobelt et al, 2018)} }
+  \end{center}
+
+  \includegraphics[width=\textwidth]{s2stease}
+\end{frame}
+
 
 \section{Introduction: Data-Driven Text Generation}
 
@@ -259,125 +401,62 @@ Hawks  &         7 &          15 &       95 &     \ldots      \\
   \end{center}
 \end{frame}
 
+\begin{frame}
+  \begin{center}
+    \textbf{Are these problems just Seq2Seq?}
+
+    \begin{itemize}
+    \item Certainly the key aspect of their success.
+      \air
+
+    \item However there has slowly tentative steps towards problem
+      specific modeling.
+    \end{itemize}
+  \end{center}
+\end{frame}
 
 
 \begin{frame}
   \begin{center}
-    \textbf{Seq2Seq+} \air
+    \textbf{Case Study: Seq2Seq+Copy}
+
+    \small{(Gulcehre et al, 2016) ...}
   \end{center}
-\center
-\vspace{-5mm}
- \air
-\includegraphics[scale=0.37]{nmt-attn1}
+  \textcolor{blue}{Encoder} :
+  \[{\mathbf{h}^{x}_m \gets \RNN(\mathbf{h}^{x}_{m-1}, x_m)} \]
+
+
+  \textcolor{orange}{Attention}
+  \[\alpha \gets  \softmax(   [\mathbf{h}^{x}_1 ; \ldots; \mathbf{h}^{x}_M]^\top \mathbf{h}_{n} )\ \ \ {\mathbf{c}_n} \gets \sum_{m =1}^M \alpha_m \mathbf{h}_m^{x}  \]
+
+  \textcolor{red}{Decoder}:
+  \[{\mathbf{h}_n \gets \RNN(\mathbf{h}_{n-1}, w_n)} \]
+
+  Prediction
+  \begin{eqnarray*}
+  p(w_{n+1} | w_{1:n}, x_{1:M}) = & p(z = 1 |  w_{1:n}, x_{1:M}) \times \softmax( \mathbf{W} [\mathbf{h}_n, \mathbf{c}_n])   \\+ &\displaystyle p(z=0 | w_{1:n}, x_{1:M}) \times \sum_{m: x_m = w_{n+1}} \alpha_m
+  \end{eqnarray*}
 \end{frame}
 
 \begin{frame}
-  \begin{center}
-    \textbf{Seq2Seq+} \air
+\begin{center}
+    \textbf{Copy is Critical For Summarization }
+    \\
+    \small{(See et al. 2017)}
+      \includegraphics[width=15cm]{seeblog}
+\pause
 
-  \end{center}
-\center
-\vspace{-5mm}
- \air
-\includegraphics[scale=0.37]{nmt-attn2}
+      \textbf{Bottom-Up Summarization}
+
+ (Gehrmann et al, 2018)
+
+
+ \begin{itemize}
+ \item Shows that controlling copying alone produces state-of-the-art
+   results.
+ \end{itemize}
+\end{center}
 \end{frame}
-\begin{frame}
-  \begin{center}
-    \textbf{Seq2Seq+} \air
-
-  \end{center}
-\center
-\vspace{-5mm}
- \air
-\includegraphics[scale=0.37]{nmt-attn3}
-\end{frame}
-\begin{frame}
-  \begin{center}
-    \textbf{Seq2Seq+} \air
-
-  \end{center}
-\center
-\vspace{-5mm}
- \air
-\includegraphics[scale=0.37]{nmt-attn4}
-\end{frame}
-\begin{frame}
-  \begin{center}
-    \textbf{Seq2Seq+} \air
-
-  \end{center}
-\center
-\vspace{-5mm}
- \air
-\includegraphics[scale=0.37]{nmt-attn5}
-\end{frame}
-\begin{frame}
-  \begin{center}
-    \textbf{Seq2Seq+} \air
-
-  \end{center}
-\center
-\vspace{-5mm}
- \air
-\includegraphics[scale=0.37]{nmt-attn6}
-\end{frame}
-\begin{frame}
-  \begin{center}
-    \textbf{Seq2Seq+} \air
-
-  \end{center}
-\center
-\vspace{-5mm}
- \air
-\includegraphics[scale=0.37]{nmt-attn7}
-\end{frame}
-\begin{frame}
-  \begin{center}
-    \textbf{Seq2Seq+} \air
-
-  \end{center}
-\center
-\vspace{-5mm}
- \air
-\includegraphics[scale=0.37]{nmt-attn8}
-\end{frame}
-\begin{frame}
-  \begin{center}
-    \textbf{Seq2Seq+} \air
-
-  \end{center}
-\center
-\vspace{-5mm}
- \air
-\includegraphics[scale=0.37]{nmt-attn9}
-\end{frame}
-\begin{frame}
-  \begin{center}
-    \textbf{Seq2Seq+} \air
-
-  \end{center}
-\center
-\vspace{-5mm}
- \air
-\includegraphics[scale=0.37]{nmt-attn10}
-\end{frame}
-
-\begin{frame}
-  \begin{center}
-    \textbf{OpenNMT\\ {\small (Klein et al, 2017)}}
-  \end{center}
-
-  \includegraphics[width=10cm]{opennmt}
-\end{frame}
-
-\begin{frame}
-  \begin{center}
-    \textbf{Seq2Seq-Vis \\ {\small (Strobelt et al, 2018)} }
-  \end{center}
-
-  \includegraphics[width=\textwidth]{s2stease}
-\end{frame}
-
 
 \begin{frame}
   \begin{center}
@@ -451,96 +530,208 @@ Rodney McGruder  &    5 &    5 &  11 &    3 &    8 &     Miami \\
 \end{center}
 \end{frame}
 
+\begin{frame}
+  \centerline{\textbf{Quantitative Evaluation / RotoWire}}
+  \begin{table}
+    \small
+    \centering
+    \begin{tabular}{lcccccc}
+      \toprule
+       & \multicolumn{5}{c}{} \\
+       & \multicolumn{2}{c}{Relations}  & \multicolumn{2}{c}{Content} & Ordering \\
+      Model & P\% & \# & P\% & R\% & DLD\%  & BLEU\\
+      \midrule
+      % &Gold                     & 91.77 & 12.84 & 100   & 100  & 100   \\
+      Template                 & \textbf{99.35} & 49.7  & \textbf{45.17} & 24.85 & \textbf{12.2} & 6.87    \\
+      \midrule
+      Seq2Seq+Copy        &   71.07 & 12.61 & 21.90 & 27.27 & 8.70 & \textbf{14.46}\\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+\end{frame}
 
-\section{Latent-Variable Generation}
 
 \begin{frame}
   \begin{center}
     \textbf{ What is Missing for  Generation? }
   \end{center}
 
-    \textit{Building Natural Language Generation Systems} (1999)
+    \textit{Building Natural Language Generation Systems} (Reiter and Dale, 1999)
 
 \vspace*{-1cm}
  \begin{center}
     \includegraphics[width =12cm]{datadoc}
   \end{center}
   \vspace*{-0.5cm}
+
+
+  \begin{itemize}
+  \item Argument 1: Need bigger models. At greater than X parameters these
+    properties will start showing up. (May likely be true)
+    \air
+  \item Argument 2: Just like \textit{copy} we need richer models of
+    the underlying phenomenon.
+
+  \end{itemize}
+
+
 \end{frame}
+
+
+
+\section{Latent-Variable Generation}
 
 \begin{frame}
 \begin{center}
-    \textbf{Research Direction: Deep Latent-Variable Models for NLP }
+    \textbf{Research Direction: \\
+      Deep Latent-Variable Models for NLP }
   \end{center}
-  Goal: Expose specific choices as explicit latent variables.
+  Goal: Expose specific choices as explicit \textit{discrete} latent variables.
 
-\end{frame}
 
-\begin{frame}
-\begin{center}
-    \textbf{ Latent-Variable Model Basics }
-  \end{center}
-
-Latent variable models give us a joint distribution
 \begin{align*}
-p(x, z \param \theta).
+p(y, z \param \theta).
 \end{align*}
 
 \pause
 \begin{itemize}
-    \item $x$ is our observed data
-    \item $z$ is a collection of latent variables
-    \item $\theta$ are the deterministic parameters of the model, such as the neural network parameters
+    \item $y$ is our observed data
+    \item $z$ is a collection of problem-specific latent variables
+    \item $\theta$ are the deterministic, neural network parameters.
 \end{itemize}
 
-\pause
+% \begin{itemize}
+%     \item Data consists of $N$ i.i.d samples,
+% \end{itemize}
 
-\begin{itemize}
-    \item Data consists of $N$ i.i.d samples,
-\end{itemize}
+%                 \[ p(x^{(1:N)}, z^{(1:N)} \param \theta ) = \prod_{n=1}^N p(x^{(n)} \given z^{(n)}; \theta) p(z^{(n)};\theta). \]
 
-
-                \[ p(x^{(1:N)}, z^{(1:N)} \param \theta ) = \prod_{n=1}^N p(x^{(n)} \given z^{(n)}; \theta) p(z^{(n)};\theta). \]
 \end{frame}
 
-\begin{frame}\thetitle{Posterior Inference}
-    For models $p(x, z \param \theta)$, we'll be interested in the \textit{posterior} over latent variables $z$:
+\begin{frame}
+\thetitle{Example Model: Mixture of RNNs}
+
+Generative process:
+\begin{enumerate}
+\item Draw cluster $z \in \{1, \ldots, K\}$ from a Categorical.
+\item Draw words $y_{1:T}$ from RNNLM with parameters $\pi_z$.
+\end{enumerate}
+\[p(y, z \param \theta)
+       = \mu_{z} \times   \RNNLM(y_{1:T} \param \pi_z) \]
+% \[p(x, z \param \theta)
+%       = \mu_{z} \times  \prod_{t=1}^T \softmax(\RNN(\boldh_{t-1}, x_t\param \pi_z))\]
+\begin{center}
+
+\begin{tikzpicture}
+  %\tikz{
+% nodes
+\node (dots) {$\ldots$};%
+ \node[obs, left=1cm of dots] (x1) {$y_1^{(n)}$};%
+ \node[obs, right=1cm of dots] (xT) {$y_T^{(n)}$};%
+ \node[latent, above=of dots] (z) {$z^{(n)}$}; %
+ \node[const, above=(0.5cm) of z] (mu) {$\mu$};
+ \node[const, below left=0.3cm and 0.8cm of x1] (pi) {$\pi$};
+
+% plate
+ \plate {plate1} {(dots)(x1)(xT)(z)} {$N$}; %
+% edges
+ \edge {z} {dots};
+ \edge {z} {x1};
+ \edge {z} {xT};
+ \edge {mu} {z};
+ \edge {pi.east} {x1,xT.south};
+ \edge {x1} {dots};
+ %\edge[bend left] {x1.south} {xT.south};
+  \edge {dots} {xT};
+
+ \draw[->]
+ (x1) edge[bend right=10] node [right] {} (xT);
+ %}
+ \end{tikzpicture}
+ %}
+\end{center}
+%\begin{align*}
+%\boldh_{z,t} &= \tanh(\mathbf{W}_z \bolde_t +\mathbf{U}_z\boldh_{z,t-1}  + \boldb_{z}) \nonumber \\
+%p(x_{t} \given x_{<t} , z) &= \softmax(\mathbf{V} \boldh_{z,t-1} + \boldc)_{x_{t}} \nonumber \\
+%p(x_1, \ldots, x_T \given z) &= \prod_{t=1}^{T} p(x_{t} \given x_{<t} , z)
+%\end{align*}
+
+
+\end{frame}
+
+
+% begin{frame}
+% \begin{center}
+%     \textbf{ Latent-Variable Model Basics }
+%   \end{center}
+
+
+% \begin{align*}
+% p(x, z \param \theta).
+% \end{align*}
+
+% \pause
+% \begin{itemize}
+%     \item $x$ is our observed data
+%     \item $z$ is a collection of latent variables
+%     \item $\theta$ are the deterministic parameters of the model, such as the neural network parameters
+% \end{itemize}
+
+% \pause
+
+% \begin{itemize}
+%     \item Data consists of $N$ i.i.d samples,
+% \end{itemize}
+
+
+%                 \[ p(x^{(1:N)}, z^{(1:N)} \param \theta ) = \prod_{n=1}^N p(x^{(n)} \given z^{(n)}; \theta) p(z^{(n)};\theta). \]
+% \end{frame}
+
+\begin{frame}\thetitle{Main Requirement: Posterior Inference}
+    For models $p(y, z \param \theta)$, we'll be interested in the \textit{posterior} over latent variables $z$:
 
     \begin{align*}
-        p(z \given x \param \theta) = \frac{\displaystyle p(x, z \param \theta)}{\displaystyle p(x \param \theta)}.
+        p(z \given y \param \theta) = \frac{\displaystyle p(y, z \param \theta)}{\displaystyle p(y \param \theta)} = \frac{\displaystyle p(y\given z \param  \theta) p(z \param  \theta)}{\displaystyle \sum_{z'} p(y \given z'\param  \theta) p(z'\param  \theta) }.
     \end{align*}
 
     \air
 
-    \air
     \pause
     Why?
     \begin{itemize}
-        \item $z$ will often represent interesting information about our data.
+      \item Required for training
+      \item Latent $z$ gives separation of data.
 
-\item Intuition: if I know likely $z^{(n)}$ for $x^{(n)}$, I can learn by maximizing $p(x^{(n)} \given z^{(n)} \param \theta)$.
+% \item Intuition: if I know likely $z^{(n)}$ for $x^{(n)}$, I can learn by maximizing $p(x^{(n)} \given z^{(n)} \param \theta)$.
         % \begin{itemize}
         %     \item Intuition: if I know likely $z^{(n)}$ for $x^{(n)}$, I can learn by maximizing $p(x^{(n)} \given z^{(n)} \param \theta)$.
         % \end{itemize}
     \end{itemize}
 
+    How?
+
+    \begin{itemize}
+    \item Sum out over all discrete choices (e.g. run $K$ RNNs).
+    \item Variational inference based methods.
+    \end{itemize}
+
 \end{frame}
+
 
 \begin{frame}
   \begin{center}
-    \textbf{ Example: Copy-Attention \\
+    \textbf{ In Applications: Copy-Attention \\
       \small{(Gu et al, 2016) (Gulcehre et al, 2016)}}
   \end{center}
 
 Let $z$ be a binary latent variable.
 \air
 \begin{itemize}
-\item If $z = 0$, let the model generate a new word.
-\item If $z = 1$, let the model copy a word from the source.
+\item If $z = 1$, let the model generate a new word.
+\item If $z = 0$, let the model copy a word from the source.
 \end{itemize}
 
 Inference:
-
 \begin{center}
 
 
@@ -572,24 +763,25 @@ Inference:
 
 
 
-\begin{frame}
-  \begin{center}
-    \textbf{Approach 1: Latent Alignment and Variational Attention}
-  \end{center}
-
-  \begin{center}
-    \includegraphics[width=0.7\textwidth]{AttentionVIS}
-  \end{center}
-\end{frame}
 
 
 \begin{frame}
   \begin{center}
-    \textbf{Approach 2: Learning Neural Templates}
+    \textbf{Approach 1: Learning Neural Templates}
   \end{center}
 
   \begin{center}
     \includegraphics[width=0.7\textwidth]{DecoderVis}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \textbf{Approach 2: Latent Alignment and Variational Attention}
+  \end{center}
+
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{AttentionVIS}
   \end{center}
 \end{frame}
 
@@ -681,25 +873,19 @@ mexico city , mexico -lrb- cnn -rrb- -- heavy rains and flooding have forced hun
 
 
 \begin{frame}
-\thetitle{Six Challenges for NMT (Koehn and Knowles 2017)}
-\begin{enumerate}
-    \item Out of domain generalization
+\thetitle{Motivation: \\
+  Six Challenges for NMT (Koehn and Knowles 2017)}
+\begin{itemize}
+    \item \textbf{2: Requires large sample complexity}
     \air
-    \item \textbf{Sample complexity}
-    \air
-    \item Rare words
-    \air
-    \item Long sentences
-    \air
-    \item \textbf{The alignments learned by soft attention may not
+    \item \textbf{5: The alignments learned by soft attention may not
         be interpreted as word alignments}
     \air
-    \item Beam search degradation for large beams
-\end{enumerate}
+\end{itemize}
+These issues are are even greater for text generation.
 \end{frame}
 
 
-\section{Intro}
 
 
 % \begin{frame}
@@ -721,21 +907,41 @@ mexico city , mexico -lrb- cnn -rrb- -- heavy rains and flooding have forced hun
 % \end{frame}
 
 % \section{Formal Description}
+\begin{frame}
+  \begin{center}
+    \textbf{Seq2Seq+} \air
 
-\begin{frame}\thetitle{Attention versus Alignment}
+  \end{center}
+\center
+\vspace{-5mm}
+ \air
+\includegraphics[scale=0.37]{nmt-attn3}
+\end{frame}
+
+
+\begin{frame}\thetitle{Neural Attention versus Latent Alignment}
 \begin{itemize}
-     \item Attention is motivated as an ``alignment'' module:
+     \item Attention is motivated as an approximation to alignment:
         \begin{itemize}
             \item makes the model's behavior interpretable
             \item can be used for other prediction tasks
         \end{itemize}
     \air
-    \item Soft Attention is a \textit{deterministic}  from a neural network,
+    % \item Soft Attention is \textit{deterministic}  from a neural network,
     \air
 
-    \item We contrast this with alignment which acts as a random variable.
+    \item We contrast this with latent alignment which acts as a random variable.
+      \air
+
+    \end{itemize}
+    \centerline{\textbf{Key Distinction}}
+    \begin{itemize}
+    \item Both can compute $p(x | z)$ but attention cannot compute
+      posterior $p(z | x)$.
     \end{itemize}
 \end{frame}
+
+
 
 \begin{frame}\thetitle{Latent Alignment: Motivation}
 
@@ -802,7 +1008,7 @@ likelihood of $x$ given $z$
 \item Replace the joint distribution with a nested expectation
 {\small[Bahdanau et al 2014]}
     \begin{eqnarray*}
-        \log \E_z [f(x, z;\theta)_{\hat{y}}] \approx \log f(x,\E_z[z];\theta)
+        \log \E_z [f(x, z)_{\hat{y}}] \approx \log f(x,\E_z[z])_{\tilde{y}}
     \end{eqnarray*}
 \item The corresponding graphical model is
 \air
@@ -820,6 +1026,18 @@ likelihood of $x$ given $z$
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \begin{center}
+    \textbf{Seq2Seq+} \air
+
+  \end{center}
+\center
+\vspace{-5mm}
+ \air
+\includegraphics[scale=0.37]{nmt-attn4}
+\end{frame}
+
+
 \begin{frame}\thetitle{Workaround 2: Hard Attention}
 \begin{itemize}
 \item Keep the latent variable model formulation and maximize a lower bound
@@ -828,9 +1046,10 @@ on the marginal likelihood
 \item {\small[Xu et al 2015]}: Directly apply Jensen's inequality and optimize
     with REINFORCE by sampling from the prior
     \begin{eqnarray*}
-        \log \E_z [f(x, z;\theta)_{\hat{y}}] \ge \E_z \log [f(x, z;\theta)_{\hat{y}}]
+        \log \E_z [f(x, z)_{\hat{y}}] \ge \E_z \log [f(x, z)_{\hat{y}}] \approx \log f(x, \tilde{z})_{\hat{y}}
     \end{eqnarray*}
 \item The use of the prior in the expectation may result in a poor bound
+\item Cannot directly use for posterior estimation.
 
 \end{itemize}
 \end{frame}
@@ -1022,6 +1241,23 @@ $\lambda$ parameterizes a global network (encoder) that is run over $x, y, \tild
 \end{itemize}
 \end{frame}
 
+
+\begin{frame}
+  \thetitle{Concurrent Experimental Work}
+
+  Many different researchers have recently explored the
+  benefits of marginalization. Very similar results.
+
+  \begin{itemize}
+  \item Surprisingly Easy Hard-Attention for Sequence to Sequence Learning
+  \item Hard Non-Monotonic Attention for Character-Level Transduction
+  \item Posterior Attention Models for Sequence to Sequence Learning
+  \end{itemize}
+
+  These results seem robust across these works.
+
+\end{frame}
+
 \begin{frame}
   \thetitle{Experiments}
 
@@ -1059,6 +1295,27 @@ $\lambda$ parameterizes a global network (encoder) that is run over $x, y, \tild
   % and BLEU (higher is better) for IWSLT '14 De-En.}
 \end{table}
 \end{frame}
+
+\begin{frame}\thetitle{Results (MT: WMT)}
+\begin{table}
+  \centering
+  \begin{tabular}{lllrrrrr}
+    \toprule
+    % %
+    Model & Objective & Exp  & PPL &  BLEU \\
+    \midrule
+  Soft Attn & $\log p(y \given \E[z])$ & Softmax & - &  24.10 \\
+  Var Attn &  $\E_q[\log p] - \KL$ &Sample& - &  24.98 \\
+    \bottomrule
+  \end{tabular}
+
+  % \caption{The Exp column indicates
+  % whether the expectation in the objective is calculated via enumeration (Enum) or approximated with a single sample (Sample) during training.
+  % We evaluate on perplexity PPL (lower is better)
+  % and BLEU (higher is better) for IWSLT '14 De-En.}
+\end{table}
+\end{frame}
+
 \begin{frame}\thetitle{Preliminary Results (Low Data Settings)}
 \begin{table}
   \centering
@@ -1161,18 +1418,20 @@ $\lambda$ parameterizes a global network (encoder) that is run over $x, y, \tild
 \end{figure}
 \end{frame}
 
-% \begin{frame}
-%   \thetitle{Conclusion}
-%   \begin{itemize}
-%   \item Latent alignment methods competitive or better than soft attention.
-%     \item   Code: \url{https://github.com/harvardnlp/var-attn}
-%   \item Future Work
-%     \begin{itemize}
-%     \item Utilize additional knowledge to help alignment.
-%     \item Incorporate model constraints.
-%     \item Variational alignment for other problems.
-%     \end{itemize}
-%   \end{itemize}
-% \end{frame}
+\begin{frame}
+  \thetitle{Conclusion}
+  \begin{itemize}
+  \item Discrete latent variables are a natural fit for NLP
+    \air
+  \item Methods can be integrated naturally into many problems.
+    \air
+  \item Tools for training these approaches are coming along fast.
+    \air
+
+  \item Also check out our tutorial: Deep Latent-Variable NLP
+    \url{bit.do/lvnlp}
+
+  \end{itemize}
+\end{frame}
 
 \end{document}
