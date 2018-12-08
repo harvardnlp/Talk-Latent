@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169]{beamer}
+\documentclass[aspectratio=169,12pt]{beamer}
 % \mode<presentation>
 \setbeamertemplate{navigation symbols}{}
 \let\tempone\itemize
@@ -138,7 +138,7 @@
 
 \maketitle
 
-\section{Background: Text Generation and Seq2Seq}
+\section{Prelude: Text Generation and Seq2Seq}
 
 \begin{frame}
   \begin{center}
@@ -172,6 +172,7 @@ mexico city , mexico -lrb- cnn -rrb- -- heavy rains and flooding have forced hun
   \end{center}
 \end{frame}
 
+
 \begin{frame}
   \begin{center}
     \textbf{Abstractive Sentence Summarization } \\
@@ -200,76 +201,24 @@ mexico city , mexico -lrb- cnn -rrb- -- heavy rains and flooding have forced hun
 
 
 
-\begin{frame}
-  \begin{center}
-    \textbf{Text Generation: \\ Talk about Structured Data (Generation) }
-  \end{center}
-  \begin{center}
-\begin{tikzpicture}
-\node{\includegraphics[width=5cm]{galaxy}};
-\path<2>[draw] (0, 0) --  (2,0) ;
-\node[inner sep=1pt, rounded corners, text width=15em, xshift=-4cm,]{\small
-  \begin{center}
-\vspace{0.5cm}
-\footnotesize
-\begin{tabular}{lcccccc}
-\toprule
-{} & W & L & PTS &  \ldots \\
-TEAM &           &             &          &                      \\
-\midrule
-Heat   &        11 &          12 &      103 &     \ldots      \\
-Hawks  &         7 &          15 &       95 &     \ldots      \\
-\bottomrule
 
-\vspace*{0.3cm}
-\end{tabular}
+% \begin{frame}
+% % \centerline{\textbf{E2E Challenge 2018}}
+% % \air
+% \begin{center}
+%   \includegraphics[width=0.5\textwidth]{e2e}
+% \end{center}
+% \begin{figure}[t]
+% \centering
+% \small
+% \begin{tabular}{@{}ll@{}}
 
-% \begin{tabular}{lccccccccc}
 % \toprule
-% {} &  AS &    RB &   PT &  FG &  FGA & CITY  $\ldots$ \\
-% PLAYER      &      &      &      &       &      &      &           \\
-% \midrule
-% Tyler Johnson    &    5 &    2 &  27 &    8 &   16 &     Miami \\
-% Dwight Howard    &    11 &    17 &  23 &    9 &   11 &   Atlanta \\
-% Paul Millsap     &    2 &    9 &  21 &    8 &   12 &   Atlanta \\
-% Goran Dragic     &    4 &    2 &  21 &    8 &   17 &     Miami \\
-% Wayne Ellington  &    2 &    3 &  19 &    7 &   15 &     Miami \\
-% Dennis Schroder  &    7 &    4 &  17 &    8 &   15 &   Atlanta \\
-% Rodney McGruder  &    5 &    5 &  11 &    3 &    8 &     Miami \\
-% \ldots \\
-% \bottomrule
+% \bf MR        & \begin{tabular}[c]{@{}l@{}}name{[}The Golden Palace{]}, \\ eatType{[}coffee shop{]}, \\ food{[}Fast food{]}, \\ priceRange{[}cheap{]}, \\ customer rating{[}5 out of 5{]}, \\ area{[}riverside{]}\end{tabular}         \\ \midrule
+% \bf Reference & \begin{tabular}[c]{@{}l@{}}A coffee shop located on the riverside  called The Golden Palace,  \\ has a 5 out of 5 customer rating.  Its price range are fairly cheap  \\for its excellent Fast food.\end{tabular} \\ \bottomrule
 % \end{tabular}
-
-  \end{center}
-
-
-
-
-};
- % \node [xshift=-3.5cm, rectangle, draw,thick,fill=blue!0,text width=8em, rounded corners, inner sep =5pt, minimum height=1em]{\baselineskip=50pt \footnotesize The Atlanta Hawks defeated the Miami Heat, 103 - 95, at Philips Arena on Wednesday. Atlanta  ... \par};
-\visible<2>{\node[xshift=3.5cm, rectangle, draw,thick,fill=blue!0,text width=8em, rounded corners, inner sep =5pt, minimum height=1em]{\baselineskip=50pt \footnotesize The Atlanta Hawks defeated the Miami Heat, 103 - 95, at Philips Arena on Wednesday. Atlanta  ... \par};}
-\end{tikzpicture}
-  \end{center}
-\end{frame}
-
-
-\begin{frame}
-% \centerline{\textbf{E2E Challenge 2018}}
-% \air
-\begin{center}
-  \includegraphics[width=0.5\textwidth]{e2e}
-\end{center}
-\begin{figure}[t]
-\centering
-\small
-\begin{tabular}{@{}ll@{}}
-
-\toprule
-\bf MR        & \begin{tabular}[c]{@{}l@{}}name{[}The Golden Palace{]}, \\ eatType{[}coffee shop{]}, \\ food{[}Fast food{]}, \\ priceRange{[}cheap{]}, \\ customer rating{[}5 out of 5{]}, \\ area{[}riverside{]}\end{tabular}         \\ \midrule
-\bf Reference & \begin{tabular}[c]{@{}l@{}}A coffee shop located on the riverside  called The Golden Palace,  \\ has a 5 out of 5 customer rating.  Its price range are fairly cheap  \\for its excellent Fast food.\end{tabular} \\ \bottomrule
-\end{tabular}
-\end{figure}
-\end{frame}
+% \end{figure}
+% \end{frame}
 
 
 \begin{frame}
@@ -293,7 +242,7 @@ Hawks  &         7 &          15 &       95 &     \ldots      \\
   \centerline{\small (Deng et al, 2017)}
 \air
 \begin{center}
-  \includegraphics[height=0.6\textheight]{latex}
+  \includegraphics[width=0.9\linewidth]{latex}
 \end{center}
 \end{frame}
 
@@ -305,7 +254,7 @@ Hawks  &         7 &          15 &       95 &     \ldots      \\
 \air
 
   \begin{center}
-    \includegraphics[width=0.9\linewidth]{ImageMark}
+    \includegraphics[width=1\linewidth]{ImageMark}
   \end{center}
 \end{frame}
 
@@ -431,14 +380,14 @@ Hawks  &         7 &          15 &       95 &     \ldots      \\
 % \end{frame}
 
 
-% \begin{frame}
-%   \begin{center}
-%     \textbf{OpenNMT\\ {\small (Klein et al, 2017)}}
+\begin{frame}
+  \begin{center}
+    \textbf{OpenNMT\\ {\small (Klein et al, 2017)}}
 
-%   \includegraphics[width=10cm]{opennmt}
-%   \end{center}
+  \includegraphics[width=10cm]{opennmt}
+  \end{center}
 
-% \end{frame}
+\end{frame}
 
 \begin{frame}
   \begin{center}
@@ -447,6 +396,61 @@ Hawks  &         7 &          15 &       95 &     \ldots      \\
 
   \includegraphics[width=\textwidth]{s2stease}
 \end{frame}
+
+\section{Controlling Generation}
+
+\begin{frame}
+  \begin{center}
+    \textbf{Text Generation: \\ Talk about Structured Data (Generation) }
+  \end{center}
+  \begin{center}
+\begin{tikzpicture}
+\node{\includegraphics[width=5cm]{galaxy}};
+\path<2>[draw] (0, 0) --  (2,0) ;
+\node[inner sep=1pt, rounded corners, text width=15em, xshift=-4cm,]{\small
+  \begin{center}
+\vspace{0.5cm}
+\footnotesize
+\begin{tabular}{lcccccc}
+\toprule
+{} & W & L & PTS &  \ldots \\
+TEAM &           &             &          &                      \\
+\midrule
+Heat   &        11 &          12 &      103 &     \ldots      \\
+Hawks  &         7 &          15 &       95 &     \ldots      \\
+\bottomrule
+
+\vspace*{0.3cm}
+\end{tabular}
+
+% \begin{tabular}{lccccccccc}
+% \toprule
+% {} &  AS &    RB &   PT &  FG &  FGA & CITY  $\ldots$ \\
+% PLAYER      &      &      &      &       &      &      &           \\
+% \midrule
+% Tyler Johnson    &    5 &    2 &  27 &    8 &   16 &     Miami \\
+% Dwight Howard    &    11 &    17 &  23 &    9 &   11 &   Atlanta \\
+% Paul Millsap     &    2 &    9 &  21 &    8 &   12 &   Atlanta \\
+% Goran Dragic     &    4 &    2 &  21 &    8 &   17 &     Miami \\
+% Wayne Ellington  &    2 &    3 &  19 &    7 &   15 &     Miami \\
+% Dennis Schroder  &    7 &    4 &  17 &    8 &   15 &   Atlanta \\
+% Rodney McGruder  &    5 &    5 &  11 &    3 &    8 &     Miami \\
+% \ldots \\
+% \bottomrule
+% \end{tabular}
+
+  \end{center}
+
+
+
+
+};
+ % \node [xshift=-3.5cm, rectangle, draw,thick,fill=blue!0,text width=8em, rounded corners, inner sep =5pt, minimum height=1em]{\baselineskip=50pt \footnotesize The Atlanta Hawks defeated the Miami Heat, 103 - 95, at Philips Arena on Wednesday. Atlanta  ... \par};
+\visible<2>{\node[xshift=3.5cm, rectangle, draw,thick,fill=blue!0,text width=8em, rounded corners, inner sep =5pt, minimum height=1em]{\baselineskip=50pt \footnotesize The Atlanta Hawks defeated the Miami Heat, 103 - 95, at Philips Arena on Wednesday. Atlanta  ... \par};}
+\end{tikzpicture}
+  \end{center}
+\end{frame}
+
 
 \begin{frame}
   \begin{center}
@@ -510,6 +514,38 @@ Rodney McGruder  &    5 &    5 &  11 &    3 &    8 &     Miami \\
 
 \end{frame}
 
+
+\begin{frame}
+  \begin{center}
+    \textbf{Templated Baseline}
+  \end{center}
+
+
+  \begin{quote}
+
+
+\textbf{The} $\langle$team1$\rangle$ ($\langle$wins1$\rangle$-$\langle$losses1$\rangle$) \textbf{defeated the} $\langle$team2$\rangle$ ($\langle$wins2$\rangle$-$\langle$losses2$\rangle$) $\langle$pts1$\rangle$-$\langle$pts2$\rangle$.
+
+
+
+\centerline{(6$\times$)}
+\air
+
+$\langle$player$\rangle$ \textbf{scored} $\langle$pts$\rangle$ \textbf{points} ($\langle$fgm$\rangle$-
+$\langle$fga$\rangle$ \textbf{FG}, $\langle$tpm$\rangle$-$\langle$tpa$\rangle$ \textbf{3PT}, $\langle$ftm$\rangle$-
+$\langle$fta$\rangle$ \textbf{FT) to go with} $\langle$reb$\rangle$ \textbf{rebounds.}
+
+
+
+\air
+
+\textbf{The} $\langle$team1$\rangle$’ \textbf{next game will be at home
+against the Dallas Mavericks, while the}
+$\langle$team2$\rangle$ \textbf{will travel to play the Bulls.}
+  \end{quote}
+
+\end{frame}
+
 \begin{frame}
   \begin{center}
     \textbf{Challenges of Neural Generation  \\ {\small (Wiseman et al, 2017) } }
@@ -518,7 +554,7 @@ Rodney McGruder  &    5 &    5 &  11 &    3 &    8 &     Miami \\
   \begin{figure}
 \centering
 \scalebox{0.9}{\begin{tikzpicture}
-    \node[text width=12cm, draw, rounded corners, inner sep=10pt]{\small
+    \node[text width=14cm, draw, rounded corners, inner sep=10pt]{\small
   The \textcolor<2>{blue}{Utah Jazz} ( \textcolor<2>{blue}{38} - \textcolor<2>{red}{26} ) \textcolor<2>{red}{defeated} the \textcolor<2>{blue}{Houston Rockets} ( \textcolor<2>{red}{38} - \textcolor<2>{blue}{26} ) \textcolor<2>{blue}{117 - 91} on Wednesday at \textcolor<2>{blue}{Energy Solutions Arena in Salt Lake City} . The \textcolor<2>{blue}{Jazz} got out to a quick start in this one , out - scoring the \textcolor<2>{blue}{Rockets} \textcolor<2>{blue}{31} - \textcolor<2>{red}{15} in the first quarter alone . Along with the quick start , the \textcolor<2>{blue}{Rockets} were the superior shooters in this game , going \textcolor<2>{blue}{54 percent from the field} and \textcolor<2>{blue}{43 percent from the three - point line} , while the \textcolor<2>{blue}{Jazz} went \textcolor<2>{blue}{38} percent from the floor and a meager \textcolor<2>{blue}{19} percent from deep . The \textcolor<2>{blue}{Rockets} were able to out - rebound the \textcolor<2>{red}{Rockets} \textcolor<2>{blue}{49} - \textcolor<2>{red}{49} , giving them just enough of an advantage to secure the victory in front of their \textcolor<2>{red}{home crowd} . The \textcolor<2>{blue}{Jazz} were led by the duo of \textcolor<2>{blue}{Derrick Favors} and \textcolor<2>{red}{James Harden} . Favors went \textcolor<2>{blue}{2 - for - 6} from the field and \textcolor<2>{blue}{0 - for - 1} from the three - point line to score a \textcolor<2>{red}{game - high} of \textcolor<2>{red}{15 points} , while also adding \textcolor<2>{blue}{four rebounds} and \textcolor<2>{red}{four assists} ....};
   \end{tikzpicture}}
 \end{figure}
@@ -526,21 +562,37 @@ Rodney McGruder  &    5 &    5 &  11 &    3 &    8 &     Miami \\
 \end{center}
 \end{frame}
 
+
+
 \begin{frame}
-  \centerline{\textbf{Quantitative Evaluation / RotoWire}}
+  \centerline{\textbf{Quantitative Evaluation }}
   \begin{table}
     \small
     \centering
-    \begin{tabular}{lcccccc}
+
+    \begin{tabular}{lc}
       \toprule
-       & \multicolumn{5}{c}{} \\
+       & Accuracy \\
+      Model  & BLEU\\
+      \midrule
+      Template                 &  6.87    \\
+      \midrule
+      Seq2Seq+       &    \textbf{14.46}\\
+      \bottomrule
+    \end{tabular}
+
+    \pause
+    \vspace{0.5cm}
+
+    \begin{tabular}{lccccc}
+      \toprule
        & \multicolumn{2}{c}{Relations}  & \multicolumn{2}{c}{Content} & Ordering \\
-      Model & P\% & \# & P\% & R\% & DLD\%  & BLEU\\
+      Model & P\% & \# & P\% & R\% & DLD\%  \\
       \midrule
       % &Gold                     & 91.77 & 12.84 & 100   & 100  & 100   \\
-      Template                 & \textbf{99.35} & 49.7  & \textbf{45.17} & 24.85 & \textbf{12.2} & 6.87    \\
+      Template                 & \textbf{99.35} & 49.7  & \textbf{45.17} & 24.85 & \textbf{12.2} \\
       \midrule
-      Seq2Seq+Copy        &   71.07 & 12.61 & 21.90 & 27.27 & 8.70 & \textbf{14.46}\\
+      Seq2Seq+       &   71.07 & 12.61 & 21.90 & 27.27 & 8.70 \\
       \bottomrule
     \end{tabular}
   \end{table}
@@ -549,7 +601,7 @@ Rodney McGruder  &    5 &    5 &  11 &    3 &    8 &     Miami \\
 
 
 
-\section{Controlling Generation}
+
 
 \begin{frame}
   \begin{center}
@@ -559,7 +611,7 @@ Rodney McGruder  &    5 &    5 &  11 &    3 &    8 &     Miami \\
     \textit{Building Natural Language Generation Systems} (Reiter and Dale, 1999)
 
  \begin{center}
-    \includegraphics[width =12cm]{datadoc}
+    \includegraphics[width=\linewidth]{datadoc}
   \end{center}
 
 \end{frame}
@@ -773,11 +825,11 @@ Generative process:
     \item Sum out over all discrete choices (e.g. run $K$ RNNs).
     \item Variational inference based methods.
     \end{itemize}
-    Why?
-    \begin{itemize}
-      \item Required for training
-      \item Latent $z$ gives separation of data.
-    \end{itemize}
+    % Why?
+    % \begin{itemize}
+    %   \item Required for training
+    %   \item Latent $z$ gives separation of data.
+    % \end{itemize}
 \end{frame}
 
 
@@ -859,7 +911,35 @@ Inference:
 {
 \setbeamercolor{background canvas}{bg=}
 \includepdf[pages=2-2]{template}
-\includepdf[pages=5-35]{template}
+\includepdf[pages=5-16]{template}
+
+% \includepdf[pages=5-23]{template}
+% \includepdf[pages=34-35]{template}
+}
+
+
+\begin{frame}
+\centerline{\textbf{Generation: What does this buy us?}}
+\air
+
+\begin{itemize}
+\item Still an end-to-end deep model.
+\air
+\item Still can generate any possible output.
+\air
+
+\item Latent-variables do not inherently provide robustness.
+\end{itemize}
+
+\end{frame}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf[pages=17-23]{template}
+\includepdf[pages=25-27]{template}
+
+ \includepdf[pages=25-35]{template}
+% \includepdf[pages=36-37]{template}
 }
 
 % \begin{frame}\thetitle{Method}
@@ -932,33 +1012,37 @@ Inference:
   \thetitle{Interpretability and Robustness in Generation}
 
   \begin{itemize}
-  \item End-to-end modeling gives accurate and natural responses.
+  \item End-to-end modeling gives natural responses.
     \air
 
-  \item Discrete structure provides high-precision guarantees.
+  \item Discrete latents can provide robustness and control.
     \air
 
-  \item System is post-hoc checkable and adjustable by humans.
+  \item Strong demand for systems that are checkable by humans.
 
   \end{itemize}
 
 \end{frame}
 
 
-\section{Conclusion}
+\section{Conclusion: Latent Variables and Interpretability}
 
 \begin{frame}
   \thetitle{Conclusion}
   \begin{itemize}
   \item Discrete latent variables are a natural fit for NLP
-    \air
-  \item Methods can be integrated naturally into many problems.
-    \air
+
   \item Tools for training these approaches are coming along fast. (Pyro, Edward, etc.)
     \air
 
-  \item Also check out our tutorial: Deep Latent-Variable NLP
-    \url{bit.do/lvnlp}
+  \item Check out code and tutorials:
+    \begin{itemize}
+    \item Group: \url{nlp.seas.harvard.edu}
+    \item Templates: \url{github.com/harvardnlp/neural-template-gen}
+    \item Deep Latent-Variable NLP: \url{bit.do/lvnlp}
+    \end{itemize}
+
+
 
   \end{itemize}
 \end{frame}
